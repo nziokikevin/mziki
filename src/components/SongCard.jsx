@@ -15,7 +15,19 @@ const SongCard = ({ song, i }) => {
               ? 'flex bg-black bg-opacity-70'
               : 'hidden'
           }`}
-        ></div>
+        >
+          <PlayPause />
+        </div>
+        <img src={song.images?.coverart} alt="song_image" />
+      </div>
+
+      <div className="flex flex-col mt-4">
+        <p className="text-lg text-white truncate font-semibold">
+          <Link to={`/songs/${song?.key}`}>{song.title}</Link>
+        </p>
+        <p className="text-sm text-gray-300 truncate mt-1">
+          <Link to={song.artists ? `/artists/${song?.artists[0].adamid}` : '/top-artists'}>{song.subtitle}</Link>
+        </p>
       </div>
     </div>
   );
