@@ -4,9 +4,15 @@ import PlayPause from './PlayPause';
 import { playPause, setActiveSong } from '../redux/features/playerSlice';
 
 const SongCard = ({ song, i, isPlaying, activeSong, data }) => {
-  const handlePlayClick = () => {};
+  const dispatch = useDispatch();
+  const handlePlayClick = () => {
+    dispatch(setActiveSong({ song, data, i }));
+    dispatch(playPause(true));
+  };
 
-  const handlePauseClick = () => {};
+  const handlePauseClick = () => {
+    dispatch(playPause(false));
+  };
 
   return (
     <div className="flex flex-col bg-white/5 bg-opactiy-80 w-[250px] backdrop-blur-sm animate-slideup rounded-lg cursor-pointer p-4">
